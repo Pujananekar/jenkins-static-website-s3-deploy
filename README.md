@@ -4,20 +4,6 @@ Complete guide to automate static website deployment to AWS S3 using Jenkins.
 
 ---
 
-## Folder Structure
-
-```
-my-website/
-├─ site/
-│  ├─ index.html
-│  ├─ css/
-│  └─ js/
-├─ Jenkinsfile
-└─ README.md
-```
-
----
-
 ## Step 1 — Create GitHub Repository
 
 1. Create a new repository on GitHub (e.g., `my-website`)
