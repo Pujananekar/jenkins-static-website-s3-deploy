@@ -264,51 +264,6 @@ pipeline {
 4. Check Jenkins console output (job page) to verify all stages pass
 5. Open in browser: `http://<your-bucket-name>.s3-website-<region>.amazonaws.com`
 
----
 
-## Troubleshooting
-
-### Jenkins can't find AWS CLI
-* Ensure agent has `awscli` installed
-* For Docker agents, add to Dockerfile: `RUN apt-get update && apt-get install -y awscli`
-
-### 403 Access Denied on S3
-* Verify IAM policy includes `PutObject` permission
-* Check bucket policy and Block Public Access settings
-* Ensure credentials are correctly configured in Jenkins
-
-### Webhook Not Triggering
-* Verify Jenkins is publicly accessible
-* Check webhook delivery in GitHub (Settings → Webhooks → Recent Deliveries)
-* For local development, use ngrok: `ngrok http 8080`
-
-### Files Not Updating
-* Clear browser cache
-* Verify `aws s3 sync` command includes `--delete` flag
-* Check S3 bucket directly in AWS Console
-
----
-
-## Security Best Practices
-
-* **Production:** Avoid public S3 buckets — use CloudFront + Origin Access Identity (OAI) with HTTPS
-* **IAM:** Follow least privilege principle — grant only necessary permissions
-* **Credentials:** Store secrets securely in Jenkins Credentials plugin — never in plaintext
-* **Region:** Choose AWS region closest to your users for better performance
-
----
-
-## Complete Pre-Flight Checklist
-
-- [ ] GitHub repo created and code pushed
-- [ ] S3 bucket created with static hosting enabled
-- [ ] IAM user created with credentials saved
-- [ ] Jenkins running with Git and Pipeline plugins
-- [ ] AWS credentials added to Jenkins
-- [ ] Jenkinsfile in repo root with correct bucket name
-- [ ] Jenkins pipeline job configured
-- [ ] GitHub webhook added
-
----
 
 **Happy deploying! 🚀**
